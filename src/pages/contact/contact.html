@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="hidden-desktop">
+      Challan Details
+    </ion-title>
+    <ion-title class="visible-desktop">
+       <a href="#"><img src="../../assets/icon/logo-desk.jpg" alt=""/></a>
+    </ion-title>
+    <ion-list class="ionav visible-desktop"><a href="#">Home</a><a href="#">Dashboard</a><a href="#">About</a><a href="#">Contact Us</a></ion-list>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content>    
+    <div class="">
+        <h5 class="paddLeft16">Fill Details</h5>
+        <form (ngSubmit)="logForm()" class="challanForm">
+
+          <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" ngControl="name" disabled="true" value="Manjeet Singh"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Mobile No.</ion-label>
+            <ion-input type="text" ngControl="Mobile" disabled="true" value="9988339877"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Address</ion-label>
+            <ion-textarea rows="4" ngControl="address" disabled="true" value="Tech Mahindra, IT Park Chadigarh, India, lorem ipsum dolor"></ion-textarea>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Select Traffic Violation</ion-label>          
+            <ion-select [(ngModel)]="todo.reasons" name="reasons" multiple="true" cancelText="Cancel" okText="Select" >
+              <ion-option value="1">Overspeed</ion-option>
+              <ion-option value="2">Without Helmet</ion-option>
+              <ion-option value="3">Violating the Stop Line.</ion-option>
+              <ion-option value="4">Violating the Mandatory Signs.</ion-option>
+              <ion-option value="5">Driving bikes/ two wheelers without wearing a helmet.</ion-option>
+              <ion-option value="6">Driving without fastening the seat belts.</ion-option>
+              <ion-option value="7">Taking “U” turn during forbidden hours.</ion-option>
+              <ion-option value="8">Violating the Yellow Line.</ion-option>
+              <ion-option value="9">Signal Jumping.</ion-option>
+              <ion-option value="10">Using Mobile Phone while Driving.</ion-option>
+            </ion-select>
+
+          </ion-item>
+
+          <ion-item *ngFor='let input of inputs'>
+              <ion-label floating>{{input.value}}</ion-label>
+              <ion-input [(ngModel)]="input.value" type="text" name="input.value"></ion-input>
+          </ion-item>
+
+
+          <p padding>
+            <button ion-button color="primary" block type="button" (click)="addInput()">Add Field</button>
+          </p>   
+
+          <ion-item>
+            <ion-label floating>Add Remarks</ion-label>
+            <ion-textarea [(ngModel)]="todo.remarks" name="remarks"></ion-textarea>
+          </ion-item>
+
+           <h5 class="paddLeft16 marginT40">List of Traffic Violation</h5>
+            <ion-list>
+                <ion-item><ion-icon name="checkmark" item-left></ion-icon>Overspeed</ion-item>
+                <ion-item><ion-icon name="checkmark" item-left></ion-icon>Without Helmet</ion-item>
+                <ion-item><ion-icon name="checkmark" item-left></ion-icon>Signal Jumping.</ion-item>
+                <ion-item><ion-icon name="checkmark" item-left></ion-icon>Violating the Stop Line.</ion-item>
+            </ion-list>
+
+          <p padding>
+            <button ion-button color="danger" block type="submit">Submit</button>
+          </p>
+        </form>
+    </div>
+</ion-content>
